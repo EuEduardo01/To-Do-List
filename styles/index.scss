@@ -1,0 +1,161 @@
+@use "variaveis";
+@use "mixins";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Poppins:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Poppins:wght@300;400;500&display=swap");
+* {
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: variaveis.$primary-color;
+}
+header {
+    color: variaveis.$white;
+    font-family: "Bebas Neue", sans-serif;
+    h1 {
+        margin: 0;
+        font-size: 4em;
+    }
+}
+main {
+    font-family: "Poppins", sans-serif;
+    background-color: variaveis.$white;
+    min-height: 85%;
+    min-width: 35%;
+    margin-top: 0.5vh;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    .header-To-do {
+        @include mixins.spaces;
+        font-size: 1.6em;
+        color: variaveis.$text-teme;
+        button {
+            width: 2rem;
+            font-size: 1em;
+            background-color: transparent;
+            #trash-icon {
+                color: variaveis.$text-teme;
+                &:hover {
+                    color: #ff0000;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .sub-header-container {
+        @include mixins.spaces;
+        span {
+            font-size: 0.9em;
+            padding-left: 0.5rem;
+            color: variaveis.$primary-color;
+        }
+        .add-button-container {
+            display: flex;
+            margin-top: 0.8rem;
+            input {
+                // border: 1px solid variaveis.$seach-border;
+                background-color: #d9d9d954;
+                border-radius: 15px 0px 0px 15px;
+                padding: 10px;
+                outline: none;
+
+                &::placeholder {
+                    color: variaveis.$text-teme;
+                    font-family: "Poppins", sans-serif;
+                }
+            }
+            .add-button {
+                border-radius: 0px 15px 15px 0px;
+                width: 2rem;
+                background-color: variaveis.$primary-color;
+                color: variaveis.$white;
+                &:hover {
+                    background-color: variaveis.$hover;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .tasks {
+        li {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+
+            .delet-checked {
+                display: flex;
+                button {
+                    border: 1px solid variaveis.$gray;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    width: 1.6rem;
+                    cursor: pointer;
+                    #checked-icon,
+                    #delet-icon {
+                        opacity: 0;
+                    }
+                    #checked-icon:hover {
+                        opacity: 25%;
+                    }
+                    .delet-icon{
+                        display: block;
+                        opacity: 1;
+                        margin: auto;
+                        cursor: pointer;
+                        border-bottom: 1px solid red;
+                        width: 15px;
+                        &:nth-child(1){
+                            transform: rotate(45deg);
+                        }
+                        &:nth-child(2){
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+            }
+            .text {
+                position: relative;
+                width: 80%;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    background-color: variaveis.$gray;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                }
+            }  
+        }
+        
+    }
+}
+#delet:hover{
+   transform: rotate(45deg);
+   transition: 0.5s ease-in-out;
+}
+
+@keyframes linha {
+    100%{
+        transform: translateY(-11px) ;
+    }
+}
+.active{
+    color: variaveis.$gray;
+    &::after{
+        animation: linha 0.5s forwards ease;
+    }
+}
+
+.toggle-display{
+    display: none;
+}
+
+

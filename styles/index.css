@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Poppins:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Poppins:wght@300;400;500&display=swap");
+* {
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0077b6;
+}
+
+header {
+  color: #ffffff;
+  font-family: "Bebas Neue", sans-serif;
+}
+header h1 {
+  margin: 0;
+  font-size: 4em;
+}
+
+main {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  min-height: 85%;
+  min-width: 35%;
+  margin-top: 0.5vh;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+}
+main .header-To-do {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6em;
+  color: #6f6a6a;
+}
+main .header-To-do button {
+  width: 2rem;
+  font-size: 1em;
+  background-color: transparent;
+}
+main .header-To-do button #trash-icon {
+  color: #6f6a6a;
+}
+main .header-To-do button #trash-icon:hover {
+  color: #ff0000;
+  cursor: pointer;
+}
+main .sub-header-container {
+  display: flex;
+  justify-content: space-between;
+}
+main .sub-header-container span {
+  font-size: 0.9em;
+  padding-left: 0.5rem;
+  color: #0077b6;
+}
+main .sub-header-container .add-button-container {
+  display: flex;
+  margin-top: 0.8rem;
+}
+main .sub-header-container .add-button-container input {
+  background-color: rgba(217, 217, 217, 0.3294117647);
+  border-radius: 15px 0px 0px 15px;
+  padding: 10px;
+  outline: none;
+}
+main .sub-header-container .add-button-container input::-moz-placeholder {
+  color: #6f6a6a;
+  font-family: "Poppins", sans-serif;
+}
+main .sub-header-container .add-button-container input::placeholder {
+  color: #6f6a6a;
+  font-family: "Poppins", sans-serif;
+}
+main .sub-header-container .add-button-container .add-button {
+  border-radius: 0px 15px 15px 0px;
+  width: 2rem;
+  background-color: #0077b6;
+  color: #ffffff;
+}
+main .sub-header-container .add-button-container .add-button:hover {
+  background-color: #90e0ef;
+  cursor: pointer;
+}
+main .tasks li {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+main .tasks li .delet-checked {
+  display: flex;
+}
+main .tasks li .delet-checked button {
+  border: 1px solid #cac3c3;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 1.6rem;
+  cursor: pointer;
+}
+main .tasks li .delet-checked button #checked-icon,
+main .tasks li .delet-checked button #delet-icon {
+  opacity: 0;
+}
+main .tasks li .delet-checked button #checked-icon:hover {
+  opacity: 25%;
+}
+main .tasks li .delet-checked button .delet-icon {
+  display: block;
+  opacity: 1;
+  margin: auto;
+  cursor: pointer;
+  border-bottom: 1px solid red;
+  width: 15px;
+}
+main .tasks li .delet-checked button .delet-icon:nth-child(1) {
+  transform: rotate(45deg);
+}
+main .tasks li .delet-checked button .delet-icon:nth-child(2) {
+  transform: rotate(-45deg);
+}
+main .tasks li .text {
+  position: relative;
+  width: 80%;
+}
+main .tasks li .text::after {
+  content: "";
+  position: absolute;
+  background-color: #cac3c3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+#delet:hover {
+  transform: rotate(45deg);
+  transition: 0.5s ease-in-out;
+}
+
+@keyframes linha {
+  100% {
+    transform: translateY(-11px);
+  }
+}
+.active {
+  color: #cac3c3;
+}
+.active::after {
+  animation: linha 0.5s forwards ease;
+}
+
+.toggle-display {
+  display: none;
+}/*# sourceMappingURL=index.css.map */
