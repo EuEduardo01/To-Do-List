@@ -1,24 +1,53 @@
 const LocalStorageKey = 'Lista de tarefas'
-
+// Data e hora atual
+const dateTime = (() => {
+    const week = [
+        "Domingo",
+        "Segunda-Feira",
+        "Terça-Feira",
+        "Quarta-Feira",
+        "Quinta-Feira",
+        "Sexta-Feira",
+        "Sábado"
+    ];
+    const month = [
+        "Jan",
+        "Fev",
+        "Mar",
+        "Abr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Out",
+        "Nov",
+        "Dez"
+    ];
+    const newDate = new Date()
+    document.querySelector("#date").innerHTML = `${week[newDate.getDay()]}, ${newDate.getDate()} ${month[newDate.getMonth()]}`
+})()
 // Essa adiciona os itens ao array de objetos
 const createItem = () => {
-    trashActive()
-    let incluidBar = document.querySelector("#incluid").value;
+        // trashActive()
+        const trash = document.querySelector('#trash-icon')
+        trash.style.color = "#6f6a6a"
+        let incluidBar = document.querySelector("#incluid").value;
+        
+        if (incluidBar === "") {
+            alert("Favor preencha o espaço vazio!");
+            return;
+        }
     
-    if (incluidBar === "") {
-        alert("Favor preencha o espaço vazio!");
-        return;
-    }
-
-    let valor = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]')
-    valor.push({tarefa: incluidBar, concluida: false})
-    localStorage.setItem(LocalStorageKey, JSON.stringify(valor))
-
-    insertItem()
+        let valor = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]')
+        valor.push({tarefa: incluidBar, concluida: false})
+        localStorage.setItem(LocalStorageKey, JSON.stringify(valor))
+    
+        insertItem()
 };
 
 // Faz os itens aparecerem na tela
-const insertItem = ()=>{
+const insertItem = () => {
     let tasksContainer = document.querySelector(".tasks");
 
     cleanScreen()
@@ -40,13 +69,10 @@ const insertItem = ()=>{
         </li>
          `;
     })
-    // icone do x
-    // <i id="delet-icon" class="fa-solid fa-xmark" style="font-size: 1.5em;"> 
-
 }
 
 // Limpar tela
-const cleanScreen = ()=>{
+const cleanScreen = () => {
     const tasksContainer = document.querySelector(".tasks");
     
     while(tasksContainer.firstChild){
@@ -70,7 +96,7 @@ function checkText(index) {
     insertItem()
 }
 // Lixeira
-const trashActive = ()=>{
+const trashActive = () => {
     const delet = document.querySelectorAll('.delet')
     const checked = document.querySelectorAll('#checked')
     const trash = document.querySelector('#trash-icon')
@@ -94,5 +120,6 @@ insertItem()
 
 document.querySelector("#trash").addEventListener('click', trashActive)
 document.querySelector(".add-button").addEventListener("click", createItem);
+document.querySelector("#incluid").addEventListener("keyup", (e)=>{ e.key === "Enter" && createItem()});
 
     
