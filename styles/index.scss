@@ -110,7 +110,7 @@ main {
                         opacity: 1;
                         margin: auto;
                         cursor: pointer;
-                        border-bottom: 1px solid red;
+                        border-bottom: 1px solid black;
                         width: 15px;
                         &:nth-child(1){
                             transform: rotate(45deg);
@@ -138,16 +138,32 @@ main {
         
     }
 }
-#delet:hover{
-   transform: rotate(45deg);
-   transition: 0.5s ease-in-out;
+
+// Animação do delet
+@keyframes offFocus {
+    from{
+        opacity: 1;
+    }
+    to{
+        transform: translateY(1000%);
+        opacity: 0;
+    }
+}
+@keyframes slicer {
+    from{
+        transform: translateX(0);}
+    to{
+        border-bottom: 1px solid variaveis.$gray;
+        width: 1500%;
+    }
 }
 
-@keyframes linha {
+// animacao do check
+ @keyframes linha {
     100%{
         transform: translateY(-11px) ;
     }
-}
+ }
 .active{
     color: variaveis.$gray;
     &::after{

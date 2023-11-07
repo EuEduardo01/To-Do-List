@@ -1,4 +1,6 @@
 const LocalStorageKey = 'Lista de tarefas'
+let isClicked = false
+
 // Data e hora atual
 const dateTime = (() => {
     const week = [
@@ -29,21 +31,20 @@ const dateTime = (() => {
 })()
 // Essa adiciona os itens ao array de objetos
 const createItem = () => {
-        // trashActive()
-        const trash = document.querySelector('#trash-icon')
-        trash.style.color = "#6f6a6a"
-        let incluidBar = document.querySelector("#incluid").value;
-        
-        if (incluidBar === "") {
-            alert("Favor preencha o espaço vazio!");
-            return;
-        }
+    const trash = document.querySelector('#trash-icon')
+    trash.style.color = "#6f6a6a"
+    let incluidBar = document.querySelector("#incluid").value;
     
-        let valor = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]')
-        valor.push({tarefa: incluidBar, concluida: false})
-        localStorage.setItem(LocalStorageKey, JSON.stringify(valor))
-    
-        insertItem()
+    if (incluidBar === "") {
+        alert("Favor preencha o espaço vazio!");
+        return;
+    }
+
+    let valor = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]')
+    valor.push({tarefa: incluidBar, concluida: false})
+    localStorage.setItem(LocalStorageKey, JSON.stringify(valor))
+
+    insertItem()
 };
 
 // Faz os itens aparecerem na tela
@@ -84,36 +85,51 @@ const cleanScreen = () => {
 function checkText(index) {
     let value = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]')
     value[index].concluida = !value[index].concluida
-
-    setTimeout(() => {
-            value.splice(index, 1)
-            localStorage.setItem(LocalStorageKey, JSON.stringify(value))
-            insertItem()
-    }, 600);
-
     localStorage.setItem(LocalStorageKey, JSON.stringify(value))
 
     insertItem()
 }
+
 // Lixeira
 const trashActive = () => {
-    const delet = document.querySelectorAll('.delet')
-    const checked = document.querySelectorAll('#checked')
     const trash = document.querySelector('#trash-icon')
 
-    trash.style.color == "red"? trash.style.color = "#6f6a6a" : trash.style.color = "red";
-    
-    for(const deletActiv of delet){
-        deletActiv.classList.toggle('toggle-display')
-    }
-    for(const checkedOff of checked){
-        checkedOff.classList.toggle('toggle-display')
-    }
+    if(isClicked){
+        trash.style.color == "red"? trash.style.color = "#6f6a6a" : trash.style.color = "red";
+        insertItem()
+    }else{
+        const delet = document.querySelectorAll('.delet')
+        const checked = document.querySelectorAll('#checked')
+        trash.style.color == "red"? trash.style.color = "#6f6a6a" : trash.style.color = "red";
+         
+        for(const deletActiv of delet){
+            deletActiv.classList.toggle('toggle-display')
+        }
+        for(const checkedOff of checked){
+            checkedOff.classList.toggle('toggle-display')
+        }
+     }
+
+    isClicked = !isClicked;
 }
+
 // Deletar
 function deletText(index){
-// nao esta funcionado
-    console.log(index)
+    let value = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]');
+
+    const deletIconTwo = document.querySelectorAll("#delet-icon-two")[index];
+    const deletIconOne = document.querySelectorAll("#delet-icon-one")[index];
+    const text = document.querySelectorAll(".text")[index];
+
+    deletIconOne.style.transform = "rotate(90deg)";
+    deletIconOne.style.animation = "offFocus 1.5s forwards";
+    deletIconTwo.style.transform = "rotate(360deg)";
+    deletIconTwo.style.animation = "slicer 0.5s forwards";
+    text.style.color = "#cac3c3"
+
+    value.splice(index, 1)
+    localStorage.setItem(LocalStorageKey, JSON.stringify(value))
+
 }
 
 insertItem()

@@ -116,7 +116,7 @@ main .tasks li .delet-checked button .delet-icon {
   opacity: 1;
   margin: auto;
   cursor: pointer;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid black;
   width: 15px;
 }
 main .tasks li .delet-checked button .delet-icon:nth-child(1) {
@@ -139,11 +139,24 @@ main .tasks li .text::after {
   height: 1px;
 }
 
-#delet:hover {
-  transform: rotate(45deg);
-  transition: 0.5s ease-in-out;
+@keyframes offFocus {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(1000%);
+    opacity: 0;
+  }
 }
-
+@keyframes slicer {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    border-bottom: 1px solid #cac3c3;
+    width: 1500%;
+  }
+}
 @keyframes linha {
   100% {
     transform: translateY(-11px);
