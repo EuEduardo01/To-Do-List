@@ -3,7 +3,8 @@ Projeto feito com JavaScript, a ideia principal desse projeto foi ultilizar e ap
 
 ## Status: In progress 🚧
 
-- Necessario adicionar a funcionalidade e a animação da lixeira.
+-Animações e estilizações extras;</br>
+-Correção de bugs
 
 ## Technologies 🧰
 <div>
