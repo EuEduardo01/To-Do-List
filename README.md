@@ -3,7 +3,8 @@ Projeto feito com JavaScript, a ideia principal desse projeto foi ultilizar e ap
 
 ## Status: In progress 🚧
 
-- Necessario adicionar a funcionalidade e a animação da lixeira.
+- Animações e estilizações extras;</br>
+- Barra de rolagem.
 
 ## Technologies 🧰
 <div>
@@ -12,3 +13,8 @@ Projeto feito com JavaScript, a ideia principal desse projeto foi ultilizar e ap
   <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="Sass"/> 
   <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript"/> 
 </div>
+
+## Project
+![To do](https://github.com/EuEduardo01/To-Do-List/assets/128105446/561923d9-8a72-41ee-8271-e962433ee8b4)
+
+
