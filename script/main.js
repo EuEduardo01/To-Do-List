@@ -28,7 +28,9 @@ const dateTime = (() => {
     ];
     const newDate = new Date()
     document.querySelector("#date").innerHTML = `${week[newDate.getDay()]}, ${newDate.getDate()} ${month[newDate.getMonth()]}`
+
 })()
+
 // Essa adiciona os itens ao array de objetos
 const createItem = () => {
     const trash = document.querySelector('#trash-icon')
@@ -43,7 +45,9 @@ const createItem = () => {
     let valor = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]')
     valor.push({tarefa: incluidBar, concluida: false})
     localStorage.setItem(LocalStorageKey, JSON.stringify(valor))
-
+    
+    isClicked = false
+    
     insertItem()
 };
 
@@ -117,17 +121,22 @@ const trashActive = () => {
 function deletText(index){
     let value = JSON.parse(localStorage.getItem(LocalStorageKey) || '[]');
 
-    const deletIconTwo = document.querySelectorAll("#delet-icon-two")[index];
-    const deletIconOne = document.querySelectorAll("#delet-icon-one")[index];
     const text = document.querySelectorAll(".text")[index];
 
-    deletIconOne.style.transform = "rotate(90deg)";
-    deletIconOne.style.animation = "offFocus 1.5s forwards";
-    deletIconTwo.style.transform = "rotate(360deg)";
-    deletIconTwo.style.animation = "slicer 0.5s forwards";
+    const elements = {
+        deletIconTwo: document.querySelectorAll("#delet-icon-two")[index],
+        deletIconOne: document.querySelectorAll("#delet-icon-one")[index],
+    };
+
+    Object.entries(elements).forEach(([key, element])=>{
+        element.style.transform = key.includes('One') ? "rotate(90deg)" : "rotate(360deg)";
+        element.style.animation = key.includes('One') ? "offFocus 1.5s forwards" : "slicer 1s forwards";
+    })
+
     text.style.color = "#cac3c3"
 
     value.splice(index, 1)
+    
     localStorage.setItem(LocalStorageKey, JSON.stringify(value))
 
 }
