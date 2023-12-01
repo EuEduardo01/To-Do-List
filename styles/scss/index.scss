@@ -2,6 +2,7 @@
 @use "mixins";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Poppins:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Poppins:wght@300;400;500&display=swap");
+
 * {
     padding: 0;
     border: none;
@@ -20,8 +21,14 @@ header {
     h1 {
         margin: 0;
         font-size: 4em;
+        border-right: 8px solid;
+        width: 8.7ch;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 1.3s steps(9), blinking 0.5s infinite step-end alternate;
     }
 }
+
 main {
     font-family: "Poppins", sans-serif;
     background-color: variaveis.$white;
@@ -30,7 +37,17 @@ main {
     margin-top: 0.5vh;
     padding: 2.5rem 2rem;
     border-radius: 20px;
-    overflow-y: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar{
+        border-top-right-radius: 150px ; 
+        border-bottom-right-radius: 150px;
+        width: 5px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: gray;
+        border-radius: 150px;
+    }
     .header-To-do {
         @include mixins.spaces;
         font-size: 1.6em;
@@ -158,16 +175,24 @@ main {
     }
 }
 
+// animação digitar titulo
+@keyframes typing {
+    from{width: 0;}
+}
+@keyframes blinking {
+    50%{border-color: transparent;}
+}
+
 // animacao do check
- @keyframes linha {
+@keyframes line {
     100%{
         transform: translateY(-11px) ;
     }
- }
+}
 .active{
     color: variaveis.$gray;
     &::after{
-        animation: linha 0.5s forwards ease;
+        animation: line 0.5s forwards ease;
     }
 }
 

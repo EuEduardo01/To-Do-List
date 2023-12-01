@@ -21,6 +21,11 @@ header {
 header h1 {
   margin: 0;
   font-size: 4em;
+  border-right: 8px solid;
+  width: 8.7ch;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 1.3s steps(9), blinking 0.5s infinite step-end alternate;
 }
 
 main {
@@ -31,7 +36,16 @@ main {
   margin-top: 0.5vh;
   padding: 2.5rem 2rem;
   border-radius: 20px;
-  overflow-y: hidden;
+  overflow-y: auto;
+}
+main::-webkit-scrollbar {
+  border-top-right-radius: 150px;
+  border-bottom-right-radius: 150px;
+  width: 5px;
+}
+main::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 150px;
 }
 main .header-To-do {
   display: flex;
@@ -69,10 +83,6 @@ main .sub-header-container .add-button-container input {
   border-radius: 15px 0px 0px 15px;
   padding: 10px;
   outline: none;
-}
-main .sub-header-container .add-button-container input::-moz-placeholder {
-  color: #6f6a6a;
-  font-family: "Poppins", sans-serif;
 }
 main .sub-header-container .add-button-container input::placeholder {
   color: #6f6a6a;
@@ -157,7 +167,17 @@ main .tasks li .text::after {
     width: 1500%;
   }
 }
-@keyframes linha {
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@keyframes blinking {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes line {
   100% {
     transform: translateY(-11px);
   }
@@ -166,9 +186,11 @@ main .tasks li .text::after {
   color: #cac3c3;
 }
 .active::after {
-  animation: linha 0.5s forwards ease;
+  animation: line 0.5s forwards ease;
 }
 
 .toggle-display {
   display: none;
-}/*# sourceMappingURL=index.css.map */
+}
+
+/*# sourceMappingURL=index.css.map */
