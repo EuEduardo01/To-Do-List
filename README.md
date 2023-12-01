@@ -3,8 +3,7 @@ Projeto feito com JavaScript, a ideia principal desse projeto foi ultilizar e ap
 
 ## Status: In progress 🚧
 
-- Animações e estilizações extras;</br>
-- Barra de rolagem.
+- Animações e estilizações extras;
 
 ## Technologies 🧰
 <div>
